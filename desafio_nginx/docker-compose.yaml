@@ -16,7 +16,9 @@ services:
   node-app:
     build: ./node-app
     container_name: node-app
-    entrypoint: ["dockerize", "-wait", "tcp://database:3306", "-timeout", "20s", "node", "index.js"]
+    entrypoint: ["dockerize", "-wait", "tcp://database:3306", "-timeout", "20s", "npm", "run", "dev"]
+    volumes:
+      - ./node-app:/usr/src/app
     environment:
       MYSQL_HOST: database
       MYSQL_USER: root
