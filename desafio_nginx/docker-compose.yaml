@@ -19,6 +19,7 @@ services:
     entrypoint: ["dockerize", "-wait", "tcp://database:3306", "-timeout", "20s", "npm", "run", "dev"]
     volumes:
       - ./node-app:/usr/src/app
+      - /usr/src/app/node_modules
     environment:
       MYSQL_HOST: database
       MYSQL_USER: root
